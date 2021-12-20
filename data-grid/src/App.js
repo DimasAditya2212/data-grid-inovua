@@ -1,21 +1,19 @@
 import "@inovua/reactdatagrid-enterprise/index.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/layouts/Navbar'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/layouts/Navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TablePage from "./pages/TablePage";
-import FormTable from './pages/FormTable'
+import AddWorker from "./pages/AddWorker";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
+        <Header />
         <Routes>
-          <Route path="/" element={<TablePage />} />    
-          <Route path="newitem" element={<FormTable />} />
+          <Route path="/" element={<TablePage />} />
+          <Route path="/add-worker" element={<AddWorker />} />
         </Routes>
-        
-        
       </BrowserRouter>
     </div>
   );
