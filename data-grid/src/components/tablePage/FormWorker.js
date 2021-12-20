@@ -1,5 +1,6 @@
 import { React, Component } from "react";
 import axios from "axios";
+// import { Redirect } from "react-router-dom";
 
 class FormWorker extends Component {
   state = {
@@ -17,24 +18,45 @@ class FormWorker extends Component {
 
   saveWorker = (e) => {
     e.preventDefault();
+    // let navigate = useNavigate();
 
-    const res = axios.post("http://127.0.0.1:8000/api/add-worker", this.state);
-    console.log(res);
-    //     .then(function (response){
-    //     if (response.data.status === 200) {
-    //       console.log(res.data.message);
-    //       this.setState({
-    //         name: "",
-    //         age: "",
-    //         address: "",
-    //         salary: "",
-    //       });
+    (async () => {
+      const res = await fetch("http://127.0.0.1:8000/api/add-worker", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(this.state),
+      });
+      const response = await fetch(res);
+    })();
+
+    // const axios = require("axios");
+
+    // const res = axios
+    //   .post("http://127.0.0.1:8000/api/add-worker", this.state)
+    //   .then((res) => {
+    //     if (res.status === 200) {
+    //       this.setState(res.data);
     //     }
-    //   }).catch(function(error) {
-    //     console.error(error.response.data);
-    //   }
-    // });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // console.log(res);
+
+    // if (res.data.status === 200) {
+    //   console.log(res.data.message);
+    //   this.setState({
+    //     name: "",
+    //     age: "",
+    //     address: "",
+    //     salary: "",
+    //   });
+    // }
   };
+  // };
   render() {
     return (
       <form className="p-3" onSubmit={this.saveWorker}>
